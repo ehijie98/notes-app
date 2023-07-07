@@ -9,4 +9,11 @@ describe('NotesModel class', () => {
         const model = new NotesModel();
         expect(model.getNotes()).toEqual([]);
     });
+
+    it('returns updated list of notes added using addNote method', () => {
+        const model = new NotesModel();
+        model.addNote('Buy milk');
+        model.addNote('Go to the gym');
+        expect(model.getNotes()).toEqual(['Buy milk', 'Go to the gym']);
+    });
 })
