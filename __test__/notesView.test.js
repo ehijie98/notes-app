@@ -30,7 +30,7 @@ describe('NotesView class', () => {
 
         const button = document.querySelector("#add-note-button");
         button.click();
-        expect(document.querySelectorAll(div.note).length).toEqual(1);
-        expect(document.querySelectorAll(div.note)[0].textContent).toEqual("Test note")
+        expect(document.querySelectorAll('div.note').length).toEqual(1);
+        expect(document.querySelectorAll('div.note')[0].textContent).toEqual("Test note")
     })
 })
