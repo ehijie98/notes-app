@@ -15,7 +15,15 @@ class NotesView {
     }
 
     displayNotes() {
-        const notes = this.model.getNotes()
+        const notesToRemove = document.querySelectorAll('div.note');
+        notesToRemove.forEach((note) => {
+            // console.log('Deleting note');
+            note.remove();
+            // console.log('Note should be deleted');
+        });
+
+        
+        const notes = this.model.getNotes(); 
 
         // For each note, you create and append a new element on the main container
         notes.forEach(note => {
