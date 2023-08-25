@@ -7,17 +7,30 @@ const fs = require('fs');
 const NotesModel = require('./../src/notesModel');
 const NotesView = require('./../src/notesView');
 
-
 describe('NotesView class', () => {
-    it('displays two notes', () => {
+    beforeEach(() => {
         document.body.innerHTML = fs.readFileSync('./index.html');
+    });
 
+    it('displays two notes', () => {
         const model = new NotesModel();
         const view = new NotesView(model);
         model.addNote('First note');
         model.addNote('Second note');
         view.displayNotes();
-        expect(document.querySelectorAll('div.note').length).toEqual(2)
+        expect(document.querySelectorAll('div.note').length).toEqual(2);
 
+    });
+
+    it('displays a new note from user input', () => {
+        const model = new NotesModel();
+        const view = new NotesView(model);
+        const input = document.querySelector('#note-input'); 
+        input.value = "Test note";
+
+        const button = document.querySelector("#add-note-button");
+        button.click();
+        expect(document.querySelectorAll(div.note).length).toEqual(1);
+        expect(document.querySelectorAll(div.note)[0].textContent).toEqual("Test note")
     })
 })
