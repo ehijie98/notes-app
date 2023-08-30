@@ -1,7 +1,7 @@
 const NotesModel = require('./notesModel');
 
 class NotesView {
-    constructor(model) {
+    constructor(model, client) {
         this.model = model;
         this.mainContainerEl = document.querySelector('#main-container');
         this.addButtonEl = document.querySelector('#add-note-button');
