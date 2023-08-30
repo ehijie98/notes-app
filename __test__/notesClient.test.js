@@ -14,10 +14,10 @@ describe('NoteClient class', () => {
             content: "fake note"
         }));
 
-        client.loadNotes((noteInfo) => {
+        notesClient.loadNotes((noteInfo) => {
             expect(noteInfo.length).toBe(1);
             expect(noteInfo.content).toBe("fake note");
-            done()
+            done();
         })
     })
 })
