@@ -3,6 +3,7 @@ const NotesModel = require('./notesModel');
 class NotesView {
     constructor(model, client) {
         this.model = model;
+        this.client = client
         this.mainContainerEl = document.querySelector('#main-container');
         this.addButtonEl = document.querySelector('#add-note-button');
 
@@ -37,6 +38,13 @@ class NotesView {
     addNewNote(note) {
         this.model.addNote(note);
         this.displayNotes();
+    }
+
+    displayNotesFromApi() {
+        this.client.loadNotes(notes => {
+            this.model.setNotes(notes);
+            this.displayNotes();
+        })
     }
 }
 
