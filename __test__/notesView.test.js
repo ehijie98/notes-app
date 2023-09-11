@@ -6,6 +6,7 @@ const fs = require('fs');
 
 const NotesModel = require('./../src/notesModel');
 const NotesView = require('./../src/notesView');
+const NotesClient = require('./../src/notesClient');
 
 describe('NotesView class', () => {
     beforeEach(() => {
@@ -30,6 +31,7 @@ describe('NotesView class', () => {
 
         const button = document.querySelector("#add-note-button");
         button.click();
+        view.displayNotes();
         expect(document.querySelectorAll('div.note').length).toEqual(1);
         expect(document.querySelectorAll('div.note')[0].textContent).toEqual("Test note")
     })
@@ -46,9 +48,23 @@ describe('NotesView class', () => {
         const secondInput = document.querySelector('#note-input');
         secondInput.value = "Second note";
         button.click();
+        view.displayNotes();
 
         expect(document.querySelectorAll('div.note').length).toEqual(2);
+    })
 
+    it('displays notes existing in API', () => {
+        const model = new NotesModel();
 
+        const mockClient = {
+            loadNotes: (callback) => {
+                callback(['test note']);
+            }
+        }
+        const view = new NotesView(model, mockClient);
+
+        view.displayNotesFromApi();
+
+        expect(document.querySelector('div.note').textContent).toEqual('test note');
     })
 })
