@@ -20,4 +20,18 @@ describe('NoteClient class', () => {
             done();
         })
     })
+
+    it('calls fetch and posts new data', (done) => {
+        const notesClient = new NotesClient();
+
+        fetch.mockResponseOnce(JSON.stringify({
+            content: "fake note"
+        }));
+        
+        return notesClient.createNote("test note two")
+        .then((result) => {
+            expect(result[1]).toEqual({"content": "test note two"})
+        })
+       
+    })
 })
