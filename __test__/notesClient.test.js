@@ -5,33 +5,33 @@ require('jest-fetch-mock').enableMocks();
 describe('NoteClient class', () => {
     beforeEach(() => {
         fetch.mockClear();
-    })
-    it('calls fetch and loads data', (done) => {
+    });
+
+    it('calls fetch and loads data', async () => {
         const notesClient = new NotesClient();
 
         fetch.mockResponseOnce(JSON.stringify({
-            length: 1,
             content: "fake note"
         }));
 
-        notesClient.loadNotes((noteInfo) => {
-            expect(noteInfo.length).toBe(1);
-            expect(noteInfo.content).toBe("fake note");
-            done();
-        })
+        const response = await notesClient.loadNotes((noteInfo) => {
+            expect(noteInfo.content).toEqual("fake note");
+            expect(fetch.mock.calls.length).toEqual(1);
+            expect(fetch.mock.calls[0][0]).toEqual('http://localhost:3000/notes')
+        });
+       
     })
 
-    it('calls fetch and posts new data', (done) => {
+    it('calls fetch and posts new data', async () => {
         const notesClient = new NotesClient();
 
         fetch.mockResponseOnce(JSON.stringify({
             content: "fake note"
         }));
         
-        return notesClient.createNote("test note two")
-        .then((result) => {
-            expect(result[1]).toEqual({"content": "test note two"})
-        })
+        const response = await notesClient.createNote("fake note")
+        expect(response).toEqual({"content": "fake note"});
+        
        
     })
 })
