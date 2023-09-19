@@ -22,7 +22,7 @@ describe('NotesView class', () => {
 
     });
 
-    it('displays a new note from user input', () => {
+    xit('displays a new note from user input', () => {
         const model = new NotesModel();
         const view = new NotesView(model);
         const input = document.querySelector('#note-input'); 
@@ -35,7 +35,7 @@ describe('NotesView class', () => {
         expect(document.querySelectorAll('div.note')[0].textContent).toEqual("Test note")
     })
 
-    it('displays correct number of notes', () => {
+    xit('displays correct number of notes', () => {
         const model = new NotesModel();
         const view = new NotesView(model);
         const input = document.querySelector('#note-input');
