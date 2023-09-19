@@ -24,6 +24,7 @@ class NotesClient {
         .catch((error) => {
             console.error(("Error", error));
         })
+
     };
 
 };
