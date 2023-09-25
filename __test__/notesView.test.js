@@ -103,7 +103,7 @@ describe('NotesView class', () => {
 
         const view = new NotesView(model, mockClient);
 
-        view.displayError();
+        view.displayNotesFromApi();
 
         const result = document.querySelector('div.note');
             expect(result.textContent).toEqual('Oops, something went wrong');
