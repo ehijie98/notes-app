@@ -1,5 +1,3 @@
-const NotesModel = require('./notesModel');
-
 class NotesView {
     constructor(model, client) {
         this.model = model;
@@ -41,7 +39,7 @@ class NotesView {
             console.log(data);
             this.displayNotesFromApi()
         });
-    }
+    };
 
     displayNotesFromApi() {
         this.client.loadNotes(notes => {

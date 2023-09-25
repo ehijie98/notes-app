@@ -87,8 +87,25 @@ describe('NotesView class', () => {
         mockClient.createNote('test note 2');
         view.displayNotesFromApi();
 
-        const result = document.querySelectorAll('div.note')
+        const result = document.querySelectorAll('div.note');
         expect(result[0].textContent).toEqual('test note 1');
         expect(result[1].textContent).toEqual('test note 2');
+    })
+
+    it('displays error, when fetch fails', () => {
+        const model = new NotesModel();
+        
+        const mockClient = {
+            loadNotes: (error) => {
+                console.error("Error:", error)
+            }
+        };
+
+        const view = new NotesView(model, mockClient);
+
+        view.displayError();
+
+        const result = document.querySelector('div.note');
+            expect(result.textContent).toEqual('Oops, something went wrong');
     })
 })
