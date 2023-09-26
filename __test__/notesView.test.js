@@ -96,8 +96,8 @@ describe('NotesView class', () => {
         const model = new NotesModel();
         
         const mockClient = {
-            loadNotes: (error) => {
-                console.error("Error:", error)
+            loadNotes: () => {
+                console.log("Error: FETCH not working")
             }
         };
 
@@ -105,7 +105,7 @@ describe('NotesView class', () => {
 
         view.displayNotesFromApi();
 
-        const result = document.querySelector('div.note');
-            expect(result.textContent).toEqual('Oops, something went wrong');
+        const result = document.querySelector('div.error');
+        expect(result.textContent).toEqual('Oops, something went wrong');
     })
 })
