@@ -42,6 +42,12 @@ class NotesView {
     };
 
     displayError() {
+        const notesToRemove = document.querySelectorAll('div.error');
+        notesToRemove.forEach((note) => {
+            // console.log('Deleting note');
+            note.remove();
+            // console.log('Note should be deleted');
+        });
        const errorEl = document.createElement('div');
        errorEl.textContent = "Oops, something went wrong";
        errorEl.className = 'error';
