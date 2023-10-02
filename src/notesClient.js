@@ -7,7 +7,7 @@ class NotesClient {
             .then(data => callback(data))
             .catch((error) => {
                 console.log("There was a problem with the Fetch operation:", error);
-                return errorCallback;
+                return errorCallback();
             })
     };
 
