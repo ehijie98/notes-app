@@ -43,18 +43,18 @@ class NotesView {
 
     displayError() {
        const errorEl = document.createElement('div');
-       errorEl.textContent = "Oops something went wrong";
+       errorEl.textContent = "Oops, something went wrong";
        errorEl.className = 'error';
        this.mainContainerEl.append(errorEl);
     }
 
     displayNotesFromApi() {
-        this.client.loadNotes(notes => {
-            // This will be executed if the notes are loaded correctly from the server
+        this.client.loadNotes((notes) => {
+        // This will be executed if the notes are loaded correctly from the server
             this.model.setNotes(notes);
             this.displayNotes();
         }, () => {
-            // This will be executed if there's an error  
+            // This will be executed if there's an error
             this.displayError();
         });
     }
