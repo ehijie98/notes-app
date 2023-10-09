@@ -6,7 +6,7 @@ class NotesClient {
             })
             .then(data => callback(data))
             .catch((error) => {
-                console.log("There was a problem with the Fetch operation:", error);
+                console.log("There was a problem with the Fetch GET operation:", error);
                 return errorCallback();
             })
     };
@@ -28,7 +28,7 @@ class NotesClient {
             return data;
         })
         .catch((error) => {
-            console.log(("Error:", error));
+            console.log(("There was a problem with the Fetch POST operation", error));
         })
 
     };

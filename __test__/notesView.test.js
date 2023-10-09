@@ -92,12 +92,12 @@ describe('NotesView class', () => {
         expect(result[1].textContent).toEqual('test note 2');
     })
 
-    it('displays error, when fetch fails', () => {
+    it('displays error, when fetch GET request fails', () => {
         const model = new NotesModel();
         
         const mockClient = {
             loadNotes: () => {
-                return view.displayError()
+                return view.displayError();
             }
         };
 
