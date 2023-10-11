@@ -4,12 +4,17 @@ class NotesView {
         this.client = client
         this.mainContainerEl = document.querySelector('#main-container');
         this.addButtonEl = document.querySelector('#add-note-button');
-
+        this.deleteButtonEl = document.querySelector('#clear-notes');
+        
         this.addButtonEl.addEventListener('click', () => {
             const newNote = document.querySelector('#note-input').value;
             this.addNewNote(newNote);
 
             document.querySelector('#note-input').value = ""
+        });
+        
+        this.deleteButtonEl.addEventListener('click', () => {
+            this.clearNotesFromApi();
         });
     }
 
@@ -62,6 +67,12 @@ class NotesView {
         }, () => {
             // This will be executed if there's an error
             this.displayError();
+        });
+    }
+
+    clearNotesFromApi() {
+        this.client.clearNotes(() => {
+            this.displayNotesFromApi();
         });
     }
 }

@@ -32,6 +32,23 @@ class NotesClient {
         })
     };
 
+    clearNotes(callback) {
+        fetch('http://localhost:3000/notes', {
+            method: 'DELETE'
+        })
+        .then(response => {
+            console.log(response.ok)
+            return response.json()
+        })
+        .then((data) => { 
+            console.log("Your delete request was successful", data);
+            callback(data);
+        })
+        .catch(error => {
+            console.log("Your delete request was unsuccessful", error);
+        })
+    };
+
 };
 
 module.exports = NotesClient;
