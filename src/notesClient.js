@@ -30,7 +30,6 @@ class NotesClient {
         .catch((error) => {
             console.log(("There was a problem with the Fetch POST operation", error));
         })
-
     };
 
 };

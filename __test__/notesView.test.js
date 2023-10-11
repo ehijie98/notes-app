@@ -109,4 +109,27 @@ describe('NotesView class', () => {
         
         expect(result.textContent).toEqual('Oops, something went wrong');
     })
+
+    it('clears all notes from display', () => {
+        const model = new NotesModel
+
+        let notes = ['test note'];
+
+        const mockClient = {
+            loadNotes: (callback) => {
+                callback(notes);
+            },
+
+            clearNotes: (callback) => {
+                notes = []
+                callback(notes)
+            }
+        };
+
+        const view = new NotesView(model, mockClient);
+
+        view.clearNotesFromApi();
+        expect(document.querySelector('div.note')).toBeNull()
+    })
+
 })
