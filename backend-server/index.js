@@ -6,7 +6,7 @@ const PORT = 3000;
 app.use(cors())
 
 let notes = [
-  'This note is coming from the server'
+  ''
 ];
 
 app.use(express.json());

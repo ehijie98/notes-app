@@ -10,7 +10,7 @@ class NotesClient {
                 return errorCallback();
             })
     };
-
+    
     createNote(notes) {
         return fetch("http://localhost:3000/notes", {
             method: "POST",
@@ -48,6 +48,8 @@ class NotesClient {
             console.log("Your delete request was unsuccessful", error);
         })
     };
+
+    
 
 };
 
