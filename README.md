@@ -5,7 +5,7 @@
   ```
   ; cd backend-server
   ; npm install
-  ; cd ../
+  ; cd frontend
   ; npm install
   ```
 ## To run the application 
